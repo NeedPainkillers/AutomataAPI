@@ -1,0 +1,3 @@
+C:\Users\apcxo\source\repos\Automata theory\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.csproj.CoreCompileInputs.cache
+C:\Users\apcxo\source\repos\Automata theory\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.AssemblyInfoInputs.cache
+C:\Users\apcxo\source\repos\Automata theory\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.AssemblyInfo.cs
