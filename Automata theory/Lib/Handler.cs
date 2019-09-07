@@ -16,6 +16,7 @@ namespace Automata_theory.Lib
         //Number GetNumberRomanian(string line);
         //Number GetNumberRomanian(int number);
         Number GetNumberRomanian(Number number);
+        ChessLine GetShuffledLine(ChessLine chessLine);
     }
 
     public class Handler : IHandler
@@ -101,6 +102,22 @@ namespace Automata_theory.Lib
             number.romanian = romanNumeral;
 
             return number;
+        }
+
+        public ChessLine GetShuffledLine(ChessLine chessLine)
+        {
+            chessLine.line1 = Regex.Replace(chessLine.line1, @"\s", "").Trim();
+            chessLine.line2 = Regex.Replace(chessLine.line2, @"\s", "").Trim();
+            List<string> split1 = chessLine.line1.Split(" ").ToList();
+            List<string> split2 = chessLine.line2.Split(" ").ToList();
+            int j = 1;
+            for (int i = 0; i < split2.Count; i++)
+            {
+                split1.Insert(j, split2[i]);
+                j += 2;
+            }
+            chessLine.Result = string.Concat(split1); 
+            return chessLine;
         }
 
     }
