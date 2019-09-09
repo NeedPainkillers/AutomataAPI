@@ -39,6 +39,7 @@ namespace Automata_theory
             {
                 options.numeralsPath = Configuration.GetSection("FilePath:Numerals").Value;
             });
+            services.AddTransient<Lib.IHandler, Lib.Handler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

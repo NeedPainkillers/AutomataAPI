@@ -84,7 +84,7 @@ namespace Automata_theory.Lib
             };
 
             // split integer string into array and reverse array
-            var intArr = number.ToString().Reverse().ToArray();
+            var intArr = number.num.ToString().Reverse().ToArray();
             var len = intArr.Length;
             var romanNumeral = "";
             var i = len;
