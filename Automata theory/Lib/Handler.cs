@@ -16,7 +16,6 @@ namespace Automata_theory.Lib
         //Number GetNumberRomanian(string line);
         //Number GetNumberRomanian(int number);
         Number GetNumberRomanian(Number number);
-        ChessLine GetShuffledLine(ChessLine chessLine);
     }
 
     public class Handler : IHandler
@@ -40,26 +39,25 @@ namespace Automata_theory.Lib
         public Number GetNumberDecimal(string line)
         {
             Number number = new Number();
-            string lineTrimmed = Regex.Replace(line, @"\s", "").Trim();
+            line = line.ToLower();
+            string lineTrimmed = Regex.Replace(line, @"\s\s+", " ").Trim();
             List<string> split = lineTrimmed.Split(" ").ToList();
-            if (split.Count > 4 && number.ErrorCode == 0)
-            {
-                number.ErrorCode = 21; //don't mind that, this one is task requirement
-            }
+
             for (int i = 0; i < split.Count; i++)
             {
+                if(i > 3)
+                {
+                    number.ErrorCode = 21; //don't mind that, this one is task requirement
+                    return number;
+
+                }
                 Numeral numeral = Numerals.Find(x => x.Word.Equals(split[i]));
                 if (numeral == null)
                 {
-                    number.ErrorCode = 22;
+                    number.ErrorCode = 220+i;
                     return number;
                 }
-                if (split.Count > 2 && !split[1].Equals(Numerals.Find(x => x.Numerical.Equals(100)).Word))
-                {
-                    number.ErrorCode = 23;
-                    return number;
-                }
-                if((numeral.Rank != 1 && i == 0) || (numeral.Rank != 2 && split.Count == 2 && i ==0) || (numeral.Rank == 4 && (i != 2 || i != 0)))
+                if(false)
                 {
                     number.ErrorCode = 30 + i;
                     return number;
@@ -70,6 +68,16 @@ namespace Automata_theory.Lib
                     return number;
                 }
             }
+            if (split.Count > 2 && !split[1].Equals(Numerals.Find(x => x.Numerical.Equals(100)).Word))
+            {
+                number.ErrorCode = 23;
+                return number;
+            }
+            //if (split.Count > 4 && number.ErrorCode == 0)
+            //{
+            //    number.ErrorCode = 21; //don't mind that, this one is task requirement
+            //}
+
             return number;
         }
 
@@ -116,9 +124,10 @@ namespace Automata_theory.Lib
                 split1.Insert(j, split2[i]);
                 j += 2;
             }
-            chessLine.Result = string.Concat(split1); 
+            chessLine.Result = string.Concat(split1);
             return chessLine;
         }
+
 
     }
 }

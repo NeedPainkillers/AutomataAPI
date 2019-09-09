@@ -1,7 +1,7 @@
 ﻿function getNumbers() {
     let outRoman = 0;
     let outArabian = "";
-    let url = "http://localhost:60830/api/numeral";
+    let url = "http://176.62.184.8:60831/api/numeral";
     fetch(url, {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, cors, *same-origin
@@ -12,9 +12,80 @@
         body: JSON.stringify(document.getElementById("input").value), // body data type must match "Content-Type" header
     })
         .then(response => response.json()).then(json => {
-            outArabian = json.num; console.log(outArabian); document.getElementById("arabian").innerHTML = outArabian;
-            outRoman = json.romanian; console.log(outRoman); document.getElementById("roman").innerHTML = outRoman; console.log(json);
+            outArabian = json.num; console.log(outArabian);
+            outRoman = json.romanian;
+            errorCode = json.errorCode;
+            if (errorCode == 0) {
+                document.getElementById("arabian").innerHTML = (outArabian === 0 ? "" : outArabian);
+                document.getElementById("roman").innerHTML = outRoman;
+            }
+            else
+            {
+                let errorMessage = getErrorMessage(errorCode);
+                document.getElementById("arabian").innerHTML = errorMessage;
+                document.getElementById("roman").innerHTML = "";
+            }
+            console.log(errorCode);
+            console.log(outRoman);
+            console.log(json);
         });
+}
+
+function getErrorMessage(errorCode = 0)
+{
+    if (errorCode > 1000 && errorCode < 2000) {
+        let pos = Math.floor(errorCode % 1200 / 10) + 1;
+        let rank = errorCode % 10;
+        let message = "";
+        console.log(pos);
+        console.log(rank);
+
+        switch (rank) {
+
+            case 1:
+                message = "повторное число 1-го порядка";
+                break;
+            case 2:
+                message = "повторное число 2-го порядка";
+                break;
+            case 3:
+                message = "повторное число 3-го порядка";
+                break;
+            case 4:
+                message = "число 10-19 при наличии числа 1-го или 2-го порядка";
+            default:
+                message = "Error";
+                break;
+        }
+        return `Дан неправильнsй ввод на позиции ${pos}!`;
+    }
+
+    if (errorCode > 219 && errorCode < 230)
+    {
+        let pos = Math.floor(errorCode % 220) + 1;
+        return `Неизвестное числительное на позиции ${pos}!`;
+    }
+
+    if (errorCode > 29 && errorCode < 40) {
+        let pos = Math.floor(errorCode % 30) + 1;
+        return `Неправильное слово на позиции ${pos}!`;
+    }
+
+    switch (errorCode) {
+
+        case 11:
+            return "Слишком большое число!";
+            break;
+        case 21:
+            return "Слишком большое число слов дано!";
+            break;
+        case 23:
+            return "Неправильное слово на 2-ой позиции, возможно имелось ввиду hundred!";
+            break;
+        default:
+            return "Неизвестная ошибка!";
+            break;
+    }
 }
 
 

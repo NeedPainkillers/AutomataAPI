@@ -33,7 +33,7 @@ namespace Automata_theory.Model
             {
                 if (ranks[0] || ranks[1])
                 {
-                    ErrorCode = 120 + position;
+                    ErrorCode = 1200 + position * 10 + numeral.Rank;
                     return "Error: 12";
                 }
                 ranks[0] = true;
@@ -43,10 +43,15 @@ namespace Automata_theory.Model
             {
                 if (ranks[numeral.Rank - 1])
                 {
-                    ErrorCode = 120 + position;
+                    ErrorCode = 1200 + position*10 + numeral.Rank;
                     return "Error: 12";
                 }
+
                 ranks[numeral.Rank - 1] = true;
+                if (ranks[0])
+                {
+                    ranks[1] = true;
+                }
             }
             if (numeral.Numerical.Equals(100))
             {
@@ -55,6 +60,14 @@ namespace Automata_theory.Model
                 {
                     ErrorCode = 11;
                     return "Error: 11";
+                }
+                if (num == 0)
+                {
+                    num = 100;
+                }
+                else
+                {
+                    ranks[0] = false;
                 }
                 return "Success";
             }

@@ -1,2 +1,5 @@
 
 *.lock
+.vs/Automata theory/v16/Server/sqlite3/storage.ide
+.vs/Automata theory/v16/Server/sqlite3/storage.ide-shm
+.vs/Automata theory/v16/Server/sqlite3/storage.ide-wal
