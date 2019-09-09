@@ -1,7 +1,7 @@
 ﻿function getNumbers() {
     let outRoman = 0;
     let outArabian = "";
-    let url = "http://176.62.184.8:60831/api/numeral";
+    let url = "http://91.240.86.250:9092/api/numeral";
     fetch(url, {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, cors, *same-origin
@@ -57,7 +57,7 @@ function getErrorMessage(errorCode = 0)
                 message = "Error";
                 break;
         }
-        return `Дан неправильнsй ввод на позиции ${pos}!`;
+        return `Дан неправильный ввод на позиции ${pos}!`;
     }
 
     if (errorCode > 219 && errorCode < 230)

@@ -69,6 +69,7 @@ namespace Automata_theory.Model
                 {
                     ranks[0] = false;
                 }
+                ranks[1] = false;
                 return "Success";
             }
             num += numeral.Numerical;
