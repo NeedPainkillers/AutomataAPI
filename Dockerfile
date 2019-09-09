@@ -10,6 +10,9 @@ COPY . .
 WORKDIR "/src/Automata theory"
 RUN dotnet build "Automata theory.csproj" -c Release -o /app
 
+WORKDIR /app/Source
+COPY ["Automata theory/Automata theory/Source/numerals.txt", "numerals.txt"]
+
 FROM build AS publish
 RUN dotnet publish "Automata theory.csproj" -c Release -o /app
 
