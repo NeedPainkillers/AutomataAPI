@@ -115,8 +115,8 @@ namespace Automata_theory.Lib
 
         public ChessLine GetShuffledLine(ChessLine chessLine)
         {
-            chessLine.line1 = Regex.Replace(chessLine.line1, @"\s", "").Trim();
-            chessLine.line2 = Regex.Replace(chessLine.line2, @"\s", "").Trim();
+            chessLine.line1 = Regex.Replace(chessLine.line1, @"\s\s+", "").Trim();
+            chessLine.line2 = Regex.Replace(chessLine.line2, @"\s\s+", "").Trim();
             List<string> split1 = chessLine.line1.Split(" ").ToList();
             List<string> split2 = chessLine.line2.Split(" ").ToList();
             int j = 1;
@@ -125,7 +125,8 @@ namespace Automata_theory.Lib
                 split1.Insert(j, split2[i]);
                 j += 2;
             }
-            chessLine.Result = string.Concat(split1);
+            split1.ForEach(x => x += " ");
+            chessLine.Result = string.Concat(split1).TrimEnd();
             return chessLine;
         }
 

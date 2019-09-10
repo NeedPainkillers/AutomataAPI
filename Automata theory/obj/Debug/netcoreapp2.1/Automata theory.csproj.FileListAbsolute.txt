@@ -13,3 +13,18 @@ C:\Users\apcxo\source\repos\Automata theory\Automata theory\obj\Debug\netcoreapp
 C:\Users\apcxo\source\repos\Automata theory\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.dll
 C:\Users\apcxo\source\repos\Automata theory\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.pdb
 C:\Users\apcxo\source\repos\Automata theory\Automata theory\bin\Debug\netcoreapp2.1\Source\numerals.txt
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\bin\Debug\netcoreapp2.1\Source\numerals.txt
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\bin\Debug\netcoreapp2.1\Automata theory.deps.json
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\bin\Debug\netcoreapp2.1\Automata theory.runtimeconfig.json
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\bin\Debug\netcoreapp2.1\Automata theory.runtimeconfig.dev.json
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\bin\Debug\netcoreapp2.1\Automata theory.dll
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\bin\Debug\netcoreapp2.1\Automata theory.pdb
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.csprojAssemblyReference.cache
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.csproj.CoreCompileInputs.cache
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.RazorAssemblyInfo.cache
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.RazorAssemblyInfo.cs
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.AssemblyInfoInputs.cache
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.AssemblyInfo.cs
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.RazorTargetAssemblyInfo.cache
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.dll
+C:\Users\a7aro\Documents\GitHub\AutomataAPI\Automata theory\obj\Debug\netcoreapp2.1\Automata theory.pdb
