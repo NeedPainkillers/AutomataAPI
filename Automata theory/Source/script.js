@@ -19,8 +19,7 @@
                 document.getElementById("arabian").innerHTML = (outArabian === 0 ? "" : outArabian);
                 document.getElementById("roman").innerHTML = outRoman;
             }
-            else
-            {
+            else {
                 let errorMessage = getErrorMessage(errorCode);
                 document.getElementById("arabian").innerHTML = errorMessage;
                 document.getElementById("roman").innerHTML = "";
@@ -31,8 +30,7 @@
         });
 }
 
-function getErrorMessage(errorCode = 0)
-{
+function getErrorMessage(errorCode = 0) {
     if (errorCode > 1000 && errorCode < 2000) {
         let pos = Math.floor(errorCode % 1200 / 10) + 1;
         let rank = errorCode % 10;
@@ -60,8 +58,7 @@ function getErrorMessage(errorCode = 0)
         return `Дан неправильный ввод на позиции ${pos}!`;
     }
 
-    if (errorCode > 219 && errorCode < 230)
-    {
+    if (errorCode > 219 && errorCode < 230) {
         let pos = Math.floor(errorCode % 220) + 1;
         return `Неизвестное числительное на позиции ${pos}!`;
     }
@@ -88,22 +85,20 @@ function getErrorMessage(errorCode = 0)
     }
 }
 
-class ChessLine
-{
-	constructor(){
-	this.line1 = "";
-	this.line2 = "";
-	}
+class ChessLine {
+    constructor() {
+        this.line1 = "";
+        this.line2 = "";
+    }
 }
 
-function ShuffleLine()
-{
-	let data = new ChessLine();
-	data.line1 = document.getElementById("input1").value;
-	data.line2 = document.getElementById("input2").value;
-	let url = "http://91.240.86.250:9092/api/shuffle";
-	
-	    fetch(url, {
+function ShuffleLine() {
+    let data = new ChessLine();
+    data.line1 = document.getElementById("input1").value;
+    data.line2 = document.getElementById("input2").value;
+    let url = "http://91.240.86.250:9092/api/shuffle";
+
+    fetch(url, {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, cors, *same-origin
         headers: {
@@ -114,7 +109,7 @@ function ShuffleLine()
     })
         .then(response => response.json()).then(json => {
             result = json.result; console.log(result);
-			document.getElementById("output").innerHTML = result;
+            document.getElementById("output").innerHTML = result;
             console.log(json);
         });
 }
