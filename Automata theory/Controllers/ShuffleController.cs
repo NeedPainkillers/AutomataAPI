@@ -32,15 +32,15 @@ namespace Automata_theory.Controllers
 
         // POST api/id
         [HttpPost]
-        public Task<string> Post([FromBody] ChessLine item) // return result 
+        public Task<ChessLine> Post([FromBody] ChessLine item) // return result 
         {
             return ShuffleLinesAsync(item);
         }
 
-        private async Task<string> ShuffleLinesAsync(ChessLine item)
+        private async Task<ChessLine> ShuffleLinesAsync(ChessLine item)
         {
             await Task.Delay(10);
-            return _handler.GetShuffledLine(item).Result;
+            return _handler.GetShuffledLine(item);
         }
 
     }

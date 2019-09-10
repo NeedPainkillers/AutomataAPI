@@ -119,14 +119,26 @@ namespace Automata_theory.Lib
             chessLine.line2 = Regex.Replace(chessLine.line2, @"\s\s+", " ").Trim();
             List<string> split1 = chessLine.line1.Split(" ").ToList();
             List<string> split2 = chessLine.line2.Split(" ").ToList();
-            int j = 1;
-            for (int i = 0; i < split2.Count; i++)
+            List<string> split = new List<string>();
+            if (split1.Count == 0)
             {
-                split1.Insert(j, split2[i]);
-                j += 2;
+                split.AddRange(split2);
             }
-            split1.ForEach(x => x += " ");
-            chessLine.Result = string.Concat(split1).TrimEnd();
+            else
+            {
+                for (int i = 0, j =0 ; i < split1.Count || j < split2.Count ; i++, j++)
+                {
+                    if (i < split1.Count)
+                        split.Add(split1[i]);
+                    if (j < split2.Count)
+                        split.Add(split2[j]);
+                }
+            }
+            for (int i = 0; i < split.Count - 1 ; i++)
+            {
+                split[i] += " ";
+            }
+            chessLine.Result = string.Concat(split).TrimEnd();
             return chessLine;
         }
 
