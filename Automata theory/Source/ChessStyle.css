@@ -1,0 +1,142 @@
+﻿
+body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(215deg, #f5f5dc, #085441, #c4c4c4, #15266b, #6b3c15);
+    background-size: 10000% 10000%;
+    animation: background 240s ease infinite;
+}
+
+@keyframes background {
+    0% {
+        background-position: 0% 51%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 51%
+    }
+}
+
+.pos {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Desktop */
+.back {
+    position: relative;
+    width: 1158px;
+    height: 367px;
+    background: #D4DECC;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5);
+}
+/* Form */
+.input {
+    position: absolute;
+    width: 1101px;
+    height: 60px;
+    left: calc(50% - 1101px/2 - 0.5px);
+    top: calc(50% - 60px/2 - 98.5px);
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+/* Шахматы */
+.header {
+    position: absolute;
+    width: 1096px;
+    height: 64px;
+    left: calc(50% - 1096px/2 - 4px);
+    top: calc(50% - 64px/2 - 134.5px);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    color: #000000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+/* Form 2 */
+.input2 {
+    position: absolute;
+    width: 1102px;
+    height: 43px;
+    left: calc(50% - 1102px/2);
+    top: calc(50% - 43px/2 - 16px);
+    background: #C5C5C5;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+/* Output */
+.output {
+    position: absolute;
+    width: 1103px;
+    height: 89px;
+    left: calc(50% - 1103px/2 - 0.5px);
+    top: calc(50% - 89px/2 + 71px);
+    background: #C5C5C5;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.outputtext {
+    text-decoration: none;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    font-size: x-large;
+    color: #000000;
+}
+/* buttonPos */
+.buttonpos {
+    position: absolute;
+    width: 291px;
+    height: 46px;
+    left: 429px;
+    top: 320px;
+    background: #C4C4C4;
+}
+.button3 {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: center;
+    transition: all 0.2s;
+    position: absolute;
+    width: 291px;
+    height: 46px;
+    left: 433px;
+    top: 309px;
+    position: absolute;
+    width: 291px;
+    height: 46px;
+    left: 429px;
+    top: 320px;
+}
+
+    .button3:hover {
+        background-color: #4095c6;
+    }
+
+@media all and (max-width:30em) {
+      .button3 {
+        display: block;
+        margin: 0.2em auto;
+    }
+}

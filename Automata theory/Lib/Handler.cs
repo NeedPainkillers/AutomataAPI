@@ -16,6 +16,7 @@ namespace Automata_theory.Lib
         //Number GetNumberRomanian(string line);
         //Number GetNumberRomanian(int number);
         Number GetNumberRomanian(Number number);
+        ChessLine GetShuffledLine(ChessLine chessLine);
     }
 
     public class Handler : IHandler
