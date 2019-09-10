@@ -91,6 +91,7 @@ body {
     font-family: 'Roboto',sans-serif;
     font-weight: 300;
     font-size: x-large;
+	word-wrap: break-word;
     color: #000000;
 }
 /* Перевод прописных числительных в числовой формат */

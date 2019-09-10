@@ -73,7 +73,7 @@ body {
     height: 43px;
     left: calc(50% - 1102px/2);
     top: calc(50% - 43px/2 - 16px);
-    background: #C5C5C5;
+    background: #FFFFFF;
     border: 1px solid #000000;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -89,6 +89,7 @@ body {
     border: 1px solid #000000;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	word-wrap: break-word;
 }
 
 .outputtext {

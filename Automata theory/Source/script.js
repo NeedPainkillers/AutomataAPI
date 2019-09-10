@@ -79,6 +79,9 @@ function getErrorMessage(errorCode = 0) {
         case 23:
             return "Неправильное слово на 2-ой позиции, возможно имелось ввиду hundred!";
             break;
+        case 40:
+            return "Требуется числительное перед hundred!";
+            break;
         default:
             return "Неизвестная ошибка!";
             break;

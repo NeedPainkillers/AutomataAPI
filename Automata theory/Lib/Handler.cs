@@ -58,9 +58,9 @@ namespace Automata_theory.Lib
                     number.ErrorCode = 220+i;
                     return number;
                 }
-                if(false)
+                if(numeral.Word.Equals("hundred") && i == 0 )
                 {
-                    number.ErrorCode = 30 + i;
+                    number.ErrorCode = 40;
                     return number;
                 }
                 number.Add(numeral, i);
