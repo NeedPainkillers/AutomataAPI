@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\apcxo\\source\\repos\\Automata theory\\Automata theory\\Automata theory.csproj": {}
+    "C:\\Users\\a7aro\\Documents\\GitHub\\AutomataAPI\\Automata theory\\Automata theory.csproj": {}
   },
   "projects": {
-    "C:\\Users\\apcxo\\source\\repos\\Automata theory\\Automata theory\\Automata theory.csproj": {
+    "C:\\Users\\a7aro\\Documents\\GitHub\\AutomataAPI\\Automata theory\\Automata theory.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\apcxo\\source\\repos\\Automata theory\\Automata theory\\Automata theory.csproj",
+        "projectUniqueName": "C:\\Users\\a7aro\\Documents\\GitHub\\AutomataAPI\\Automata theory\\Automata theory.csproj",
         "projectName": "Automata theory",
-        "projectPath": "C:\\Users\\apcxo\\source\\repos\\Automata theory\\Automata theory\\Automata theory.csproj",
-        "packagesPath": "C:\\Users\\apcxo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\apcxo\\source\\repos\\Automata theory\\Automata theory\\obj\\",
+        "projectPath": "C:\\Users\\a7aro\\Documents\\GitHub\\AutomataAPI\\Automata theory\\Automata theory.csproj",
+        "packagesPath": "C:\\Users\\a7aro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\a7aro\\Documents\\GitHub\\AutomataAPI\\Automata theory\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\apcxo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\a7aro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -53,6 +53,7 @@
               "version": "[2.1.2, )"
             },
             "Microsoft.NETCore.App": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true

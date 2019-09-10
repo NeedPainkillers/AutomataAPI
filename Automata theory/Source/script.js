@@ -88,4 +88,35 @@ function getErrorMessage(errorCode = 0)
     }
 }
 
+class ChessLine
+{
+	constructor(){
+	this.line1 = "";
+	this.line2 = "";
+	}
+}
+
+function ShuffleLine()
+{
+	let data = new ChessLine();
+	data.line1 = document.getElementById("input1").value;
+	data.line2 = document.getElementById("input2").value;
+	let url = "http://91.240.86.250:9092/api/shuffle";
+	
+	    fetch(url, {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, cors, *same-origin
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+    })
+        .then(response => response.json()).then(json => {
+            result = json.result; console.log(result);
+			document.getElementById("output").innerHTML = result;
+            console.log(json);
+        });
+}
+
 
