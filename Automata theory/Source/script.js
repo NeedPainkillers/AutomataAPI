@@ -16,12 +16,13 @@
             outRoman = json.romanian;
             errorCode = json.errorCode;
             errorWord = json.errorWord;
+            sentence = json.fullSentence;
             if (errorCode == 0) {
                 document.getElementById("arabian").innerHTML = (outArabian === 0 ? "" : outArabian);
                 document.getElementById("roman").innerHTML = outRoman;
             }
             else {
-                let errorMessage = getErrorMessage(errorCode, errorWord);
+                let errorMessage = getErrorMessage(errorCode, errorWord, sentence);
                 document.getElementById("arabian").innerHTML = errorMessage;
                 document.getElementById("roman").innerHTML = "";
             }
@@ -31,7 +32,7 @@
         });
 }
 
-function getErrorMessage(errorCode = 0, errorWord = "") {
+function getErrorMessage(errorCode = 0, errorWord = "", sentence = "") {
     if (errorCode > 1000 && errorCode < 2000) {
         let pos = Math.floor(errorCode % 1200 / 10) + 1;
         let rank = errorCode % 10;
@@ -52,11 +53,12 @@ function getErrorMessage(errorCode = 0, errorWord = "") {
                 break;
             case 4:
                 message = "число 10-19 при наличии числа 1-го или 2-го порядка";
+                break;
             default:
                 message = "Error";
                 break;
         }
-        return `Слово \"${errorWord}\" на позиции ${pos}!`;
+        return `Слово \"${errorWord}\" на позиции ${pos} не может стоять после \"${sentence}\"!`;
     }
 
     if (errorCode > 219 && errorCode < 230) {

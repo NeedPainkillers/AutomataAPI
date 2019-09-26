@@ -43,6 +43,7 @@ namespace Automata_theory.Lib
             line = line.ToLower();
             string lineTrimmed = Regex.Replace(line, @"\s\s+", " ").Trim();
             List<string> split = lineTrimmed.Split(" ").ToList();
+            //number.FullSentence = lineTrimmed;
 
             for (int i = 0; i < split.Count; i++)
             {
@@ -69,6 +70,64 @@ namespace Automata_theory.Lib
                 number.Add(numeral, i);
                 if (number.ErrorCode != 0)
                 {
+                    if(number.ErrorCode > 1200)
+                    {
+                        int rank = number.ErrorCode % 10;
+                        switch (rank)
+                        {
+                            case 1:
+                                {
+                                    number.FullSentence = (from item in split
+                                                           let n = Numerals.Find(x => x.Word.Equals(split[i]))
+                                                           where n.Rank == 1 || n.Rank == 4
+                                                           select item).Take(1).First();
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    number.FullSentence = (from item in split
+                                                           let n = Numerals.Find(x => x.Word.Equals(split[i]))
+                                                           where n.Rank == 2 || n.Rank == 4
+                                                           select item).Take(1).First();
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    number.FullSentence = (from item in split
+                                                           let n = Numerals.Find(x => x.Word.Equals(split[i]))
+                                                           where n.Rank == 3
+                                                           select item).Take(1).First();
+
+                                    break;
+                                }
+                            case 4:
+                                {
+                                    if (number.ranks[4])
+                                    {
+                                        number.FullSentence = (from item in split
+                                                               let n = Numerals.Find(x => x.Word.Equals(split[i]))
+                                                               where n.Rank == 4
+                                                               select item).Take(1).First();
+                                        break;
+                                    }
+                                    if(number.ranks[0] && number.ranks[1])
+                                    {
+                                        number.FullSentence = (from item in split
+                                                               let n = Numerals.Find(x => x.Word.Equals(split[i]))
+                                                               where n.Rank == 1 || n.Rank == 2
+                                                               select item).Take(2).First();
+                                        break;
+                                    }
+                                    number.FullSentence = (from item in split
+                                                           let n = Numerals.Find(x => x.Word.Equals(split[i]))
+                                                           where n.Rank == 1 || n.Rank == 2
+                                                           select item).Take(1).First();
+                                    break;
+                                }
+                            default:
+                                break;
+                        }
+                    }
                     return number;
                 }
             }

@@ -12,6 +12,8 @@ namespace Automata_theory.Model
         public bool[] ranks { get; set; } = new bool[4] { false, false, false, false };
         public int ErrorCode { get; set; } = 0;
         public string ErrorWord { get; set; } = "";
+        public string FullSentence { get; set; } = "";
+
         /// <summary>
         /// Error codes explained:
         /// 11 - number is to big
@@ -41,7 +43,7 @@ namespace Automata_theory.Model
                 }
                 ranks[0] = true;
                 ranks[1] = true;
-                ranks[4] = true;
+                ranks[3] = true;
             }
             else
             {
