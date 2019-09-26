@@ -66,7 +66,12 @@ namespace Automata_theory.Model
                 if (num > 999)
                 {
                     ErrorCode = 11;
-                    ErrorWord = numeral.Word;
+                    if(FullSentence.Split(" ")[1].ToLower().Equals("hundred"))
+                    {
+                        ErrorWord = FullSentence.Split(" ").Take(1).First();
+                        return "11";
+                    }
+                    ErrorWord = string.Join(" ", FullSentence.Split(" ").Take(2));
                     return "Error: 11";
                 }
                 if (num == 0)

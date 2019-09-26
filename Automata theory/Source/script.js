@@ -74,19 +74,19 @@ function getErrorMessage(errorCode = 0, errorWord = "", sentence = "") {
     switch (errorCode) {
 
         case 11:
-            return "\"${errorWord}\" не может стоять перед hundred!";
+            return `\"${errorWord}\" не может стоять перед hundred!`;
             break;
         case 21:
-            return "Слишком большое число слов дано, уберите слово \"${errorWord}\"!";
+            return `Слишком большое число слов дано, уберите слово \"${errorWord}\"!`;
             break;
         case 23:
-            return "Неправильное слово \"${errorWord}\" на 2-ой позиции, возможно имелось ввиду hundred!";
+            return `Неправильное слово \"${errorWord}\" на 2-ой позиции, возможно имелось ввиду hundred!`;
             break;
         case 40:
-            return "Требуется слово перед hundred!";
+            return `Требуется слово перед hundred!`;
             break;
         default:
-            return "Неизвестная ошибка!";
+            return `Неизвестная ошибка!`;
             break;
     }
 }

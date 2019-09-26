@@ -43,7 +43,7 @@ namespace Automata_theory.Lib
             line = line.ToLower();
             string lineTrimmed = Regex.Replace(line, @"\s\s+", " ").Trim();
             List<string> split = lineTrimmed.Split(" ").ToList();
-            //number.FullSentence = lineTrimmed;
+            number.FullSentence = lineTrimmed;
 
             for (int i = 0; i < split.Count; i++)
             {
@@ -78,7 +78,7 @@ namespace Automata_theory.Lib
                             case 1:
                                 {
                                     number.FullSentence = (from item in split
-                                                           let n = Numerals.Find(x => x.Word.Equals(split[i]))
+                                                           let n = Numerals.Find(x => x.Word.Equals(item))
                                                            where n.Rank == 1 || n.Rank == 4
                                                            select item).Take(1).First();
                                     break;
@@ -86,7 +86,7 @@ namespace Automata_theory.Lib
                             case 2:
                                 {
                                     number.FullSentence = (from item in split
-                                                           let n = Numerals.Find(x => x.Word.Equals(split[i]))
+                                                           let n = Numerals.Find(x => x.Word.Equals(item))
                                                            where n.Rank == 2 || n.Rank == 4
                                                            select item).Take(1).First();
                                     break;
@@ -94,7 +94,7 @@ namespace Automata_theory.Lib
                             case 3:
                                 {
                                     number.FullSentence = (from item in split
-                                                           let n = Numerals.Find(x => x.Word.Equals(split[i]))
+                                                           let n = Numerals.Find(x => x.Word.Equals(item))
                                                            where n.Rank == 3
                                                            select item).Take(1).First();
 
@@ -102,24 +102,32 @@ namespace Automata_theory.Lib
                                 }
                             case 4:
                                 {
-                                    if (number.ranks[4])
+                                    if (number.ranks[3])
                                     {
                                         number.FullSentence = (from item in split
-                                                               let n = Numerals.Find(x => x.Word.Equals(split[i]))
+                                                               let n = Numerals.Find(x => x.Word.Equals(item))
                                                                where n.Rank == 4
                                                                select item).Take(1).First();
                                         break;
                                     }
                                     if(number.ranks[0] && number.ranks[1])
                                     {
-                                        number.FullSentence = (from item in split
-                                                               let n = Numerals.Find(x => x.Word.Equals(split[i]))
+                                        if ((number.ErrorCode % 1200 / 10) < 2)
+                                        {
+                                            number.FullSentence = (from item in split
+                                                                   let n = Numerals.Find(x => x.Word.Equals(item))
+                                                                   where n.Rank == 1
+                                                                   select item).Take(1).First();
+                                            break;
+                                        }
+                                        number.FullSentence = string.Concat((from item in split
+                                                               let n = Numerals.Find(x => x.Word.Equals(item))
                                                                where n.Rank == 1 || n.Rank == 2
-                                                               select item).Take(2).First();
+                                                               select item + " ").Take(2)).Trim();
                                         break;
                                     }
                                     number.FullSentence = (from item in split
-                                                           let n = Numerals.Find(x => x.Word.Equals(split[i]))
+                                                           let n = Numerals.Find(x => x.Word.Equals(item))
                                                            where n.Rank == 1 || n.Rank == 2
                                                            select item).Take(1).First();
                                     break;
