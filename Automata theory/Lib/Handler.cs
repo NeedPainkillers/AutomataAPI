@@ -49,6 +49,7 @@ namespace Automata_theory.Lib
                 if(i > 3)
                 {
                     number.ErrorCode = 21; //don't mind that, this one is task requirement
+                    number.ErrorWord = split[4];
                     return number;
 
                 }
@@ -56,11 +57,13 @@ namespace Automata_theory.Lib
                 if (numeral == null)
                 {
                     number.ErrorCode = 220+i;
+                    number.ErrorWord = split[i];
                     return number;
                 }
                 if(numeral.Word.Equals("hundred") && i == 0 )
                 {
                     number.ErrorCode = 40;
+                    number.ErrorWord = split[i];
                     return number;
                 }
                 number.Add(numeral, i);
@@ -72,6 +75,7 @@ namespace Automata_theory.Lib
             if (split.Count > 2 && !split[1].Equals(Numerals.Find(x => x.Numerical.Equals(100)).Word))
             {
                 number.ErrorCode = 23;
+                number.ErrorWord = split[1];
                 return number;
             }
             //if (split.Count > 4 && number.ErrorCode == 0)

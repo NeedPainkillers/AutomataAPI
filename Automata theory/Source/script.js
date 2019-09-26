@@ -15,12 +15,13 @@
             outArabian = json.num; console.log(outArabian);
             outRoman = json.romanian;
             errorCode = json.errorCode;
+            errorWord = json.errorWord;
             if (errorCode == 0) {
                 document.getElementById("arabian").innerHTML = (outArabian === 0 ? "" : outArabian);
                 document.getElementById("roman").innerHTML = outRoman;
             }
             else {
-                let errorMessage = getErrorMessage(errorCode);
+                let errorMessage = getErrorMessage(errorCode, errorWord);
                 document.getElementById("arabian").innerHTML = errorMessage;
                 document.getElementById("roman").innerHTML = "";
             }
@@ -30,7 +31,7 @@
         });
 }
 
-function getErrorMessage(errorCode = 0) {
+function getErrorMessage(errorCode = 0, errorWord = "") {
     if (errorCode > 1000 && errorCode < 2000) {
         let pos = Math.floor(errorCode % 1200 / 10) + 1;
         let rank = errorCode % 10;
@@ -55,32 +56,32 @@ function getErrorMessage(errorCode = 0) {
                 message = "Error";
                 break;
         }
-        return `Дан неправильный ввод на позиции ${pos}!`;
+        return `Слово \"${errorWord}\" на позиции ${pos}!`;
     }
 
     if (errorCode > 219 && errorCode < 230) {
         let pos = Math.floor(errorCode % 220) + 1;
-        return `Неизвестное числительное на позиции ${pos}!`;
+        return `${pos}-ое слово \"${errorWord}\" неправильное!`;
     }
 
     if (errorCode > 29 && errorCode < 40) {
         let pos = Math.floor(errorCode % 30) + 1;
-        return `Неправильное слово на позиции ${pos}!`;
+        return `${pos}-ое слово \"${errorWord}\" неправильное!`;
     }
 
     switch (errorCode) {
 
         case 11:
-            return "Слишком большое число!";
+            return "\"${errorWord}\" не может стоять перед hundred!";
             break;
         case 21:
-            return "Слишком большое число слов дано!";
+            return "Слишком большое число слов дано, уберите слово \"${errorWord}\"!";
             break;
         case 23:
-            return "Неправильное слово на 2-ой позиции, возможно имелось ввиду hundred!";
+            return "Неправильное слово \"${errorWord}\" на 2-ой позиции, возможно имелось ввиду hundred!";
             break;
         case 40:
-            return "Требуется числительное перед hundred!";
+            return "Требуется слово перед hundred!";
             break;
         default:
             return "Неизвестная ошибка!";

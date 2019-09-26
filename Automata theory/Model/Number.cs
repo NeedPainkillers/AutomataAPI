@@ -9,8 +9,9 @@ namespace Automata_theory.Model
     {
         public int num { get; set; } = 0;
         public string romanian { get; set; } = string.Empty;
-        public bool[] ranks { get; set; } = new bool[3] { false, false, false };
+        public bool[] ranks { get; set; } = new bool[4] { false, false, false, false };
         public int ErrorCode { get; set; } = 0;
+        public string ErrorWord { get; set; } = "";
         /// <summary>
         /// Error codes explained:
         /// 11 - number is to big
@@ -18,6 +19,7 @@ namespace Automata_theory.Model
         /// 21 - wrong amount of words given
         /// 22 - wrong numeral word given (word not found)
         /// 23 - expected hundred as second word 
+        /// 22x - unknown word on pos x
         /// 3x - error codes connected with specific positions of numerals in line (30 means first word is incorrect)
         /// </summary>
         /// <returns></returns>
@@ -34,16 +36,19 @@ namespace Automata_theory.Model
                 if (ranks[0] || ranks[1])
                 {
                     ErrorCode = 1200 + position * 10 + numeral.Rank;
+                    ErrorWord = numeral.Word;
                     return "Error: 12";
                 }
                 ranks[0] = true;
                 ranks[1] = true;
+                ranks[4] = true;
             }
             else
             {
                 if (ranks[numeral.Rank - 1])
                 {
                     ErrorCode = 1200 + position*10 + numeral.Rank;
+                    ErrorWord = numeral.Word;
                     return "Error: 12";
                 }
 
@@ -59,6 +64,7 @@ namespace Automata_theory.Model
                 if (num > 999)
                 {
                     ErrorCode = 11;
+                    ErrorWord = numeral.Word;
                     return "Error: 11";
                 }
                 if (num == 0)
@@ -76,6 +82,7 @@ namespace Automata_theory.Model
             if (num > 999)
             {
                 ErrorCode = 11;
+                ErrorWord = numeral.Word;
                 return "Error: 11";
             }
             return "Success";
