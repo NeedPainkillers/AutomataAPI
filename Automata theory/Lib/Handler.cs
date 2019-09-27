@@ -40,6 +40,8 @@ namespace Automata_theory.Lib
         public Number GetNumberDecimal(string line)
         {
             Number number = new Number();
+            if (line.Equals(string.Empty))
+                return number;
             line = line.ToLower();
             string lineTrimmed = Regex.Replace(line, @"\s\s+", " ").Trim();
             List<string> split = lineTrimmed.Split(" ").ToList();
@@ -47,13 +49,13 @@ namespace Automata_theory.Lib
 
             for (int i = 0; i < split.Count; i++)
             {
-                if(i > 3)
-                {
-                    number.ErrorCode = 21; //don't mind that, this one is task requirement
-                    number.ErrorWord = split[4];
-                    return number;
+                //if(i > 3)
+                //{
+                //    number.ErrorCode = 21; //don't mind that, this one is task requirement
+                //    number.ErrorWord = split[4];
+                //    return number;
 
-                }
+                //}
                 Numeral numeral = Numerals.Find(x => x.Word.Equals(split[i]));
                 if (numeral == null)
                 {
@@ -87,7 +89,7 @@ namespace Automata_theory.Lib
                                 {
                                     number.FullSentence = (from item in split
                                                            let n = Numerals.Find(x => x.Word.Equals(item))
-                                                           where n.Rank == 2 || n.Rank == 4
+                                                           where n.Rank == 1 || n.Rank == 2 || n.Rank == 4
                                                            select item).Take(1).First();
                                     break;
                                 }
