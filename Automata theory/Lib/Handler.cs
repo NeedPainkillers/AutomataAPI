@@ -79,6 +79,14 @@ namespace Automata_theory.Lib
                         {
                             case 1:
                                 {
+                                    if (number.ranks[2])
+                                    {
+                                        number.FullSentence = string.Concat((from item in split.Skip(1)
+                                                                             let n = Numerals.Find(x => x.Word.Equals(item))
+                                                                             where n.Rank == 1 || n.Rank == 4
+                                                                             select item + " ").Take(1)).Trim();
+                                        break;
+                                    }
                                     number.FullSentence = (from item in split
                                                            let n = Numerals.Find(x => x.Word.Equals(item))
                                                            where n.Rank == 1 || n.Rank == 4
@@ -87,6 +95,14 @@ namespace Automata_theory.Lib
                                 }
                             case 2:
                                 {
+                                    if (number.ranks[2])
+                                    {
+                                        number.FullSentence = (from item in split.Skip(1)
+                                                               let n = Numerals.Find(x => x.Word.Equals(item))
+                                                               where n.Rank == 1 || n.Rank == 2 || n.Rank == 4
+                                                               select item).Take(1).First();
+                                        break;
+                                    }
                                     number.FullSentence = (from item in split
                                                            let n = Numerals.Find(x => x.Word.Equals(item))
                                                            where n.Rank == 1 || n.Rank == 2 || n.Rank == 4

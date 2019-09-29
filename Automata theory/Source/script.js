@@ -43,22 +43,22 @@ function getErrorMessage(errorCode = 0, errorWord = "", sentence = "") {
         switch (rank) {
 
             case 1:
-                message = "повторное число 1-го порядка";
+                message = ", поскольку после числа единичного формата могут стоять только сотни";
                 break;
             case 2:
-                message = "повторное число 2-го порядка";
+                message = ", поскольку число десятичного формата может стоять только в начале предложения либо после сотен";
                 break;
             case 3:
-                message = "повторное число 3-го порядка";
+                message = ", поскольку слово hundred уже встречалось";
                 break;
             case 4:
-                message = "число 10-19 при наличии числа 1-го или 2-го порядка";
+                message = ", поскольку число от 10 до 19 не может стоять после других чисел за исключением слова hundred";
                 break;
             default:
                 message = "Error";
                 break;
         }
-        return `Слово \"${errorWord}\" на позиции ${pos} не может стоять после \"${sentence}\"!`;
+        return `Слово \"${errorWord}\" на позиции ${pos} не может стоять после \"${sentence}\"${message}!`;
     }
 
     if (errorCode > 219 && errorCode < 230) {

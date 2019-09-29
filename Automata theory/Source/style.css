@@ -114,9 +114,9 @@ body {
 .arabian {
     position: absolute;
     width: 354px;
-    height: 43px;
+    height: 70px;
     left: calc(50% - 354px/2 - 374px);
-    top: calc(50% - 43px/2 + 147px);
+    top: calc(50% - 75px/2 + 147px);
     background: #C5C5C5;
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -126,9 +126,9 @@ body {
 .roman {
     position: absolute;
     width: 354px;
-    height: 43px;
+    height: 70px;
     left: calc(50% - 354px/2 + 373px);
-    top: calc(50% - 43px/2 + 147px);
+    top: calc(50% - 75px/2 + 147px);
     background: #C5C5C5;
     border: 1px solid #000000;
     box-sizing: border-box;
