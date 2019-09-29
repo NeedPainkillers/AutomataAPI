@@ -59,11 +59,11 @@ namespace Automata_theory.Lib
                 Numeral numeral = Numerals.Find(x => x.Word.Equals(split[i]));
                 if (numeral == null)
                 {
-                    number.ErrorCode = 220+i;
+                    number.ErrorCode = 220 + i;
                     number.ErrorWord = split[i];
                     return number;
                 }
-                if(numeral.Word.Equals("hundred") && i == 0 )
+                if (numeral.Word.Equals("hundred") && i == 0)
                 {
                     number.ErrorCode = 40;
                     number.ErrorWord = split[i];
@@ -72,7 +72,7 @@ namespace Automata_theory.Lib
                 number.Add(numeral, i);
                 if (number.ErrorCode != 0)
                 {
-                    if(number.ErrorCode > 1200)
+                    if (number.ErrorCode > 1200)
                     {
                         int rank = number.ErrorCode % 10;
                         switch (rank)
@@ -112,7 +112,7 @@ namespace Automata_theory.Lib
                                                                select item).Take(1).First();
                                         break;
                                     }
-                                    if(number.ranks[0] && number.ranks[1])
+                                    if (number.ranks[0] && number.ranks[1])
                                     {
                                         if ((number.ErrorCode % 1200 / 10) < 2)
                                         {
@@ -122,10 +122,26 @@ namespace Automata_theory.Lib
                                                                    select item).Take(1).First();
                                             break;
                                         }
+                                        if (number.ranks[2])
+                                        {
+                                            number.FullSentence = string.Concat((from item in split.Skip(1)
+                                                                                 let n = Numerals.Find(x => x.Word.Equals(item))
+                                                                                 where n.Rank == 1 || n.Rank == 2
+                                                                                 select item + " ").Take(2)).Trim();
+                                            break;
+                                        }
                                         number.FullSentence = string.Concat((from item in split
-                                                               let n = Numerals.Find(x => x.Word.Equals(item))
-                                                               where n.Rank == 1 || n.Rank == 2
-                                                               select item + " ").Take(2)).Trim();
+                                                                             let n = Numerals.Find(x => x.Word.Equals(item))
+                                                                             where n.Rank == 1 || n.Rank == 2
+                                                                             select item + " ").Take(2)).Trim();
+                                        break;
+                                    }
+                                    if (number.ranks[2])
+                                    {
+                                        number.FullSentence = string.Concat((from item in split.Skip(1)
+                                                                             let n = Numerals.Find(x => x.Word.Equals(item))
+                                                                             where n.Rank == 1 || n.Rank == 2
+                                                                             select item + " ").Take(1)).Trim();
                                         break;
                                     }
                                     number.FullSentence = (from item in split
@@ -199,7 +215,7 @@ namespace Automata_theory.Lib
             }
             else
             {
-                for (int i = 0, j =0 ; i < split1.Count || j < split2.Count ; i++, j++)
+                for (int i = 0, j = 0; i < split1.Count || j < split2.Count; i++, j++)
                 {
                     if (i < split1.Count)
                         split.Add(split1[i]);
@@ -207,7 +223,7 @@ namespace Automata_theory.Lib
                         split.Add(split2[j]);
                 }
             }
-            for (int i = 0; i < split.Count - 1 ; i++)
+            for (int i = 0; i < split.Count - 1; i++)
             {
                 split[i] += " ";
             }
