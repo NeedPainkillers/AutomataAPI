@@ -94,7 +94,11 @@ function getErrorMessage(errorCode = 0, errorWord = "", sentence = "", ranks = [
 				postmessage = "не может стоять после десятков"
 			}
 		}
-		
+		if(rank == 3)
+		{
+			postmessage = "";
+			return `Слово \"${errorWord}\" на позиции ${pos} неправильное${message} ${postmessage}!`;
+		}
 		
         return `Слово \"${errorWord}\" на позиции ${pos} не может стоять после \"${sentence}\"${message} ${postmessage}!`;
     }
