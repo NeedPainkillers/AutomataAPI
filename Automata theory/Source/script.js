@@ -17,12 +17,13 @@
             errorCode = json.errorCode;
             errorWord = json.errorWord;
             sentence = json.fullSentence;
+			ranks = json.ranks
             if (errorCode == 0) {
                 document.getElementById("arabian").innerHTML = (outArabian === 0 ? "" : outArabian);
                 document.getElementById("roman").innerHTML = outRoman;
             }
             else {
-                let errorMessage = getErrorMessage(errorCode, errorWord, sentence);
+                let errorMessage = getErrorMessage(errorCode, errorWord, sentence, ranks);
                 document.getElementById("arabian").innerHTML = errorMessage;
                 document.getElementById("roman").innerHTML = "";
             }
@@ -32,7 +33,7 @@
         });
 }
 
-function getErrorMessage(errorCode = 0, errorWord = "", sentence = "") {
+function getErrorMessage(errorCode = 0, errorWord = "", sentence = "", ranks = []) {
     if (errorCode > 1000 && errorCode < 2000) {
         let pos = Math.floor(errorCode % 1200 / 10) + 1;
         let rank = errorCode % 10;
@@ -43,22 +44,59 @@ function getErrorMessage(errorCode = 0, errorWord = "", sentence = "") {
         switch (rank) {
 
             case 1:
-                message = ", поскольку после числа единичного формата могут стоять только сотни";
+                message = ", единицы";
                 break;
             case 2:
-                message = ", поскольку число десятичного формата может стоять только в начале предложения либо после сотен";
+                message = ", десятки";
                 break;
             case 3:
-                message = ", поскольку слово hundred уже встречалось";
+                message = ", два числа формата сотен";
                 break;
             case 4:
-                message = ", поскольку число от 10 до 19 не может стоять после других чисел за исключением слова hundred";
+                message = ", число формата 10-19";
                 break;
             default:
                 message = "Error";
                 break;
         }
-        return `Слово \"${errorWord}\" на позиции ${pos} не может стоять после \"${sentence}\"${message}!`;
+		let postmessage = "";
+		if(ranks[3] == true)
+		{
+			if(rank == 4)
+			{
+				message = ", два числа формата 10-19";
+			}
+			else
+			{
+				postmessage = "не может стоять после числа формата 10-19"
+			}
+		}
+		
+		else if(ranks[0] == true)
+		{
+			if(rank == 1)
+			{
+				message = ", два числа единичного формата";
+			}
+			else
+			{
+				postmessage = "не может стоять после единиц"
+			}
+		}
+		else if(ranks[1] == true)
+		{
+			if(rank == 2)
+			{
+				message = ", два числа формата десятков";
+			}
+			else
+			{
+				postmessage = "не может стоять после десятков"
+			}
+		}
+		
+		
+        return `Слово \"${errorWord}\" на позиции ${pos} не может стоять после \"${sentence}\"${message} ${postmessage}!`;
     }
 
     if (errorCode > 219 && errorCode < 230) {
